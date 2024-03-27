@@ -1,4 +1,4 @@
-![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/54466349-fb50-4eae-8ad1-fdd26b3cfdd5)# LAB-MachineLearning-Azure-ML
+# LAB-MachineLearning-Azure-ML
 Neste exercício, você usará o recurso de machine learning automatizado no Azure Machine Learning para treinar e avaliar um modelo de machine learning. Em seguida, você implantará e testará o modelo treinado.
 
 ## Criando um Azure Machine Learning Workspace
@@ -113,7 +113,82 @@ Quando o trabalho automatizado de aprendizado de máquina for concluído, você 
 Revise os gráficos que mostram o desempenho do modelo. O gráfico **residuals** mostra os _resíduos_ (as diferenças entre os valores previstos e reais) como um histograma. O gráfico predicted_true compara os valores previstos com os valores verdadeiros.![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/d35078c1-92d2-401b-9118-69adab40f647)
 
 ## Implantar e testar o modelo
+1. Na guia** Model** do melhor modelo treinado pelo seu trabalho automatizado de machine learning, selecione **Deploy** e use a opção de **Web Service** para implantar o modelo. ![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/ce04bea4-6571-47c6-884c-1ef9cc30f477)
+- **Deploy a Model**
+  - **Name:** predict-rentals
+  - **Description:** Prever aluguel de bicicletas
+  - **Compute type:** Azure Container Instance
+  - **Enable authentication:** _Selecionado_
+  
+  ![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/6205df18-c74f-463e-ab03-bc64369145f3)
 
+2. Aguarde o início da implantação – isso pode levar alguns segundos. O **Deploy status** do endpoint de **predict-rentals** será indicado na parte principal da página como _Running_. ![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/1a0a17c3-08f7-4d2f-a0ac-ffeae925c378)
+3. Aguarde até que o **Deploy Status** mude para _Succeeded_. Isso pode levar de 5 a 10 minutos.
+
+## Testar o serviço implantado
+Agora você pode testar seu serviço implantado.
+
+1. No estúdio Azure Machine Learning, no menu esquerdo, selecione **Endpoints** e abra o endpoint em tempo real de **predict-rentals**. ![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/66e667da-63dd-4645-be83-fbc7584ff37a)
+2. Na página do endpoint em tempo real de **predict-rentals**, visualize a guia **Test**. ![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/c5c55586-c646-405e-8ccb-0b871abd51bb)
+3. No painel **Input data to test endpoint**, substitua o modelo JSON pelos seguintes dados de entrada:
+``` {
+   "Inputs": { 
+     "data": [
+       {
+         "day": 1,
+         "mnth": 1,   
+         "year": 2022,
+         "season": 2,
+         "holiday": 0,
+         "weekday": 1,
+         "workingday": 1,
+         "weathersit": 2, 
+         "temp": 0.3, 
+         "atemp": 0.3,
+         "hum": 0.3,
+         "windspeed": 0.3 
+       }
+     ]    
+   },   
+   "GlobalParameters": 1.0
+ }
+```
+
+4. Clique no botão **Test**.
+
+5. Revise os resultados do teste, que incluem um número previsto de aluguéis com base nos recursos de entrada - semelhante a este:
+```
+{
+   "Results": [
+     444.27799000000000
+   ]
+ }
+```
+
+O painel de teste pegou os dados de entrada e usou o modelo treinado para retornar o número previsto de aluguéis.
+
+Vamos revisar o que nós fizemos. nós usamos um conjunto de dados históricos de aluguel de bicicletas para treinar um modelo. O modelo prevê o número de alugueres de bicicletas esperados num determinado dia, com base em características sazonais e meteorológicas.
+
+## Apagar
+O serviço web que você criou está hospedado em uma _instância de contêiner do Azure_. Se você não pretende fazer mais experiências com ele, exclua o ponto de extremidade para evitar o acúmulo desnecessário de uso do Azure.
+
+1. No [Azure Machine Learning studio](https://ml.azure.com/home), na guia **Endpoints**, selecione o endpoint de **predict-rentals**. Em seguida, selecione **Delete** e confirme que deseja excluir o endpoint. ![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/eec1a575-a1ae-4c51-8fba-8b0ee7e6c2ed)
+
+
+   Excluir sua computação garante que sua assinatura não será cobrada por recursos de computação. No entanto, será cobrada uma pequena quantia pelo armazenamento de dados, desde que o espaço de trabalho do Azure Machine Learning exista na sua assinatura. Se você terminou de explorar o Azure Machine Learning, você pode excluir o espaço de trabalho do Azure Machine Learning e os recursos associados.
+
+   Para excluir seu **Workspace**:
+
+   1. No [portal Azure](https://portal.azure.com), na página **Resource groups**, abra o grupo de recursos especificado ao criar o seu workspace Azure Machine Learning.![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/e2278e12-85a4-4971-b061-52ebfa101157)
+ ![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/344958e1-4512-4b6a-b28d-b42542a534e9)
+
+
+  
+   2. Clique em **Delete resource group**, digite o nome do grupo de recursos para confirmar que deseja excluí-lo e selecione **Delete**.![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/215a5840-c8ff-45e6-8324-0bf0bd093e35)
+  
+
+> [!IMPORTANT]
+> Todo esse passo a passo está no [site oficial da microsoft](https://microsoftlearning.github.io/mslearn-ai-fundamentals/Instructions/Labs/01-machine-learning.html#create-an-azure-machine-learning-workspace).
 
 
 
