@@ -7,7 +7,7 @@ Para usar o Azure Machine Learning, crie um espaço de trabalho no Azure e acess
 > [!TIP]
 > Se você já tiver um espaço de trabalho do Azure Machine Learning, poderá usá-lo e pular para a próxima tarefa.
 
-1. Entre no portal do [Azure]( https://portal.azure.com) em usando suas credenciais da Microsoft.
+1. Entre no portal do [Azure]( https://portal.azure.com) e usando suas credenciais da Microsoft, Caso não tenha uma conta Microsoft, crie uma e continue o passo a passo.
 2. Selecione "**+ Create a resource**" ![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/bf711bd3-ca8f-430f-8c11-2ffe4f9f6c3b)
   - Procure por _Machine Learning_ ![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/24932236-f06e-4937-913e-38b49c4f15eb)
   - Crie um novo recurso **Azure Machine Learning** ![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/0f39fa37-1193-486d-afe8-f5b414f8b601)
