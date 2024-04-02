@@ -179,12 +179,12 @@ O serviço web que você criou está hospedado em uma _instância de contêiner 
 
    Para excluir seu **Workspace**:
 
-   1. No [portal Azure](https://portal.azure.com), na página **Resource groups**, abra o grupo de recursos especificado ao criar o seu workspace Azure Machine Learning.![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/e2278e12-85a4-4971-b061-52ebfa101157)
+1. No [portal Azure](https://portal.azure.com), na página **Resource groups**, abra o grupo de recursos especificado ao criar o seu workspace Azure Machine Learning.![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/e2278e12-85a4-4971-b061-52ebfa101157)
  ![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/344958e1-4512-4b6a-b28d-b42542a534e9)
 
 
   
-   2. Clique em **Delete resource group**, digite o nome do grupo de recursos para confirmar que deseja excluí-lo e selecione **Delete**.![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/215a5840-c8ff-45e6-8324-0bf0bd093e35)
+2. Clique em **Delete resource group**, digite o nome do grupo de recursos para confirmar que deseja excluí-lo e selecione **Delete**.![image](https://github.com/r2WillDev/LAB-MachineLearning-Azure-ML/assets/106842143/215a5840-c8ff-45e6-8324-0bf0bd093e35)
   
 
 > [!IMPORTANT]
